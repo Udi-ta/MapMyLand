@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapMyLand</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("{% static 'images/bg_image.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding-top: 20%;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the MapMyLand Home</h1>
+    <div>
+        <a href="{% url 'add_info' %}" class="button">Add info</a>
+        <a href="{% url 'view_map' %}" class="button">View Map List</a>
+<!--        <a href="{% url 'download_report' %}" class="button">Download PDF Report</a> --> 
+        <a href="{% url 'download_excel' %}" class="button">Download Excel Report</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Property List</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvlY2vHaI7sQfu_BikAUFyZzzIWXinDuo"></script>
+    <script>
+        function initMap() {
+            var mapOptions = {
+                zoom: 8,
+                center: {lat: 28.6139, lng: 77.2090}
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var marker = new google.maps.Marker({
+                position: { lat: 28.6139, lng: 77.2090 },
+                map: map,
+                title: 'Delhi'
+            });
+            
+            {% for property in properties %}
+            var marker = new google.maps.Marker({
+                position: {lat: {{ property.latitude }}, lng: {{ property.longitude }}},
+                map: map,
+                title: '{{ property.google_location }}'
+            });
+            {% endfor %}
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <h1>Property List</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+    <form method="GET">
+        <input type="text" name="q" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for property in properties %}
+        <li>{{ property.google_location }} - {{ property.city.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_info' %}">Add a new property </a>
+    <a href="{% url 'home' %}">Home Page</a>
+</body>
+</html>

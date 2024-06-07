@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Property</title>
+    <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+</head>
+<body>
+    <!--<h1>Add a New Property</h1>-->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Property</button>
+    </form>
+    <a href="{% url 'view_map' %}">Back to Property List </a>
+    <a href="{% url 'home' %}">Home Page</a>
+</body>
+</html>
